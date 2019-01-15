@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[如何测量满阱容量(一)]]></title>
     <url>%2F2019%2F01%2F15%2F%E5%A6%82%E4%BD%95%E6%B5%8B%E9%87%8F%E6%BB%A1%E9%98%B1%E5%AE%B9%E9%87%8F-%E4%B8%80%2F</url>
-    <content type="text"><![CDATA[今天我们来讨论下如何测量传感器的满阱容量。在测量之前，需要先明确满阱容量(Full well capacity, FWC)是什么。我们列出了两种不同的情况，第一种情况是ADC设置传感器的饱和度，第二种情况是ADC没有设置传感器的饱和度。 第一种情况，传感器饱和度大于ADC最大值。在这种情况下，大多数工程师会设计让ADC的最大值覆盖整个传感器的线性输出部分。如图一所示。]]></content>
+    <content type="text"><![CDATA[今天我们来讨论下如何测量传感器的满阱容量。在测量之前，需要先明确满阱容量(Full well capacity, FWC)是什么。我们列出了两种不同的情况，第一种情况是ADC设置传感器的饱和度，第二种情况是ADC没有设置传感器的饱和度。 第一种情况，传感器饱和度大于ADC最大值。在这种情况下，大多数工程师会设计让ADC的最大值覆盖整个传感器的线性输出部分。如图一所示。 /2019/01/15/如何测量满阱容量-一/next_blog_2.jpgimg test]]></content>
       <categories>
         <category>常规光电测试</category>
       </categories>
