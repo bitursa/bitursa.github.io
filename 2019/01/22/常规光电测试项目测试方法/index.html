@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="张至诚的博客">
 <meta property="og:description" content="本篇主要总结下项目中常规光电测试使用的方法，都是通过拍摄本底场、暗场、平场图像实现的。 本底统计、读出噪声 在慢读出和快读出的方式下拍摄本底场图像N帧，N≥100。 读出噪声  对本底场图像的每个像元将N次拍摄的像元值计算平均值及标准偏差，计算中剔除最大、最小值； 每一像元N次拍摄像元值的标准偏差是该像元的读出噪声，乘以增益即以电子数为单位的读出噪声； 计算各像元读出噪声，获得探测器各像元读出噪声">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-29T09:36:28.651Z">
+<meta property="og:updated_time" content="2019-01-29T09:40:32.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常规光电测试项目测试方法">
 <meta name="twitter:description" content="本篇主要总结下项目中常规光电测试使用的方法，都是通过拍摄本底场、暗场、平场图像实现的。 本底统计、读出噪声 在慢读出和快读出的方式下拍摄本底场图像N帧，N≥100。 读出噪声  对本底场图像的每个像元将N次拍摄的像元值计算平均值及标准偏差，计算中剔除最大、最小值； 每一像元N次拍摄像元值的标准偏差是该像元的读出噪声，乘以增益即以电子数为单位的读出噪声； 计算各像元读出噪声，获得探测器各像元读出噪声">
@@ -356,7 +356,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-29T17:36:28+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-29T17:40:32+08:00">
                 2019-01-29
               </time>
             
@@ -560,9 +560,8 @@ Var\left( \triangle B \right) =\frac { 1 }{ n } \sum _{ x=x1 }^{ x2 }{ \sum _{ y
 <li>图像做差 Zero<sub>dif</sub> = Zero1 - Zero2;</li>
 <li>求Zero<sub>dif</sub>图像的方差： Var(Zero<sub>dif</sub>)</li>
 <li>图像做差 Flat<sub>dif</sub> = Flat1 - Flat2;</li>
-<li>求Flat<sub>dif</sub>图像的方差： Var(Flat<sub>dif</sub>)</li>
+<li>求Flat<sub>dif</sub>图像的方差： Var(Flat<sub>dif</sub>) <span class="math display">\[Gain = \frac{[mean(Flat1)+mean(Flat2)]-[mean(Zero1)+mean(Zero2)]}{Var(Flat_dif)-Var(Zero_dif)}\]</span></li>
 </ul></li>
-<li><span class="math inline">\(Gain = \frac{[mean(Flat1)+mean(Flat2)]-[mean(Zero1)+mean(Zero2)]}{Var(Flat_dif)-Var(Zero_dif)}\)</span></li>
 </ol>
 <h2 id="光子响应非线性度">光子响应非线性度</h2>
 <ol type="1">
