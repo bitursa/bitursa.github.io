@@ -19,7 +19,7 @@
   <entry>
     <title><![CDATA[计算MTF软件说明]]></title>
     <url>%2F2019%2F02%2F14%2F%E8%AE%A1%E7%AE%97MTF%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E%2F</url>
-    <content type="text"><![CDATA[介绍几款常用的计算MTF的软件 * * * ## Imatest Master Imatest软件是全球使用最广泛的数字图像质量分析软件。它包括全功能的图像质量测试，支持绝大多数的标准测试卡。 找了个试用版装了一下，功能实在是太多了，价格感人... * * * ## QuickMTF QuickMTF是另一款比较强大的软件，同样也是收费的。 演示视频看上去功能很强大，能够实现实时运算。 ImageJ计算MTF ImageJ是一个基于java的公共的图像处理软件，SE_MTF是ImageJ的一款插件，使用了Slanted Edge Method来计算MTF。 ### ImageJ SE_MTF使用方法 * 下载ImageJ及SE_MTF插件 * 将查件放在/plugins文件夹下 * 打开ImageJ选择图像，选择计算区域（必须是从黑到白，左边是黑色，右边是白色，否则需要旋转图像） * 打开插件SE_MTF，计算MTF SFRMAT3计算MTF SFRMAT3是一款Matlab编写的计算软件 下载地址 SFRMAT3使用方法 打开 MATLAB 进入sfrmat3路径下打开sfrmat3.m 运行sfrmat3.m，选择图像 出现&quot;Data Sampling &amp; weights&quot;窗口，一般情况下选择确定即可 鼠标滑动，选择计算的区域 得到结果并保存到.xls文件 MTFmapper MTFmapper是一款开源软件，但是具体怎么用还没搞明白。。 作者博客介绍了一些理论知识。 * * * ## Mitre SFR Mitre SFR是用C写的，用终端来进行操作，具体使用方法软件内部有介绍。]]></content>
+    <content type="text"><![CDATA[介绍几款常用的计算MTF的软件 Imatest Master Imatest软件是全球使用最广泛的数字图像质量分析软件。它包括全功能的图像质量测试，支持绝大多数的标准测试卡。 找了个试用版装了一下，功能实在是太多了，价格感人... QuickMTF QuickMTF是另一款比较强大的软件，同样也是收费的。 演示视频看上去功能很强大，能够实现实时运算。 ImageJ计算MTF ImageJ是一个基于java的公共的图像处理软件，SE_MTF是ImageJ的一款插件，使用了Slanted Edge Method来计算MTF。 ImageJ SE_MTF使用方法 下载ImageJ及SE_MTF插件 将查件放在/plugins文件夹下 打开ImageJ选择图像，选择计算区域（必须是从黑到白，左边是黑色，右边是白色，否则需要旋转图像） 打开插件SE_MTF，计算MTF SFRMAT3计算MTF SFRMAT3是一款Matlab编写的计算软件 下载地址 SFRMAT3使用方法 打开 MATLAB 进入sfrmat3路径下打开sfrmat3.m 运行sfrmat3.m，选择图像 出现&quot;Data Sampling &amp; weights&quot;窗口，一般情况下选择确定即可 鼠标滑动，选择计算的区域 得到结果并保存到.xls文件 MTFmapper MTFmapper是一款开源软件，但是具体怎么用还没搞明白。。 作者博客介绍了一些理论知识。 Mitre SFR Mitre SFR是用C写的，用终端来进行操作，具体使用方法软件内部有介绍。]]></content>
   </entry>
   <entry>
     <title><![CDATA[常规光电测试项目测试方法]]></title>
