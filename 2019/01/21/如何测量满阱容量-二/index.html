@@ -101,19 +101,19 @@
 
 
 
-<meta name="description" content="在前篇的文章中，用输入输出来测量FWC。同时，当有了一组不同曝光时间的数据时，可以通过计算出噪声来确定满阱值。 根据之前的PTC介绍，当散粒噪声占主导时，可以得到公式： $\sigma^2=k\times(S_{out}-S_{off})$ $\sigma：噪声$ $k: 转换系数$ $S_{out}: 信号平均值方差$ $S_{off}：本底值方差$ 我们不仅可以通过信号饱和来确定满阱容量，还能">
+<meta name="description" content="在前篇的文章中，用输入输出来测量FWC。同时，当有了一组不同曝光时间的数据时，可以通过计算出噪声来确定满阱值。 根据之前的PTC介绍，当散粒噪声占主导时，可以得到公式： \(\sigma^2=k\times(S_{out}-S_{off})\) \(\sigma：噪声\) \(k: 转换系数\) \(S_{out}: 信号平均值方差\) \(S_{off}：本底值方差\) 我们不仅可以通过信号饱和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何测量满阱容量(二)">
 <meta property="og:url" content="http://yoursite.com/2019/01/21/如何测量满阱容量-二/index.html">
 <meta property="og:site_name" content="张至诚的博客">
-<meta property="og:description" content="在前篇的文章中，用输入输出来测量FWC。同时，当有了一组不同曝光时间的数据时，可以通过计算出噪声来确定满阱值。 根据之前的PTC介绍，当散粒噪声占主导时，可以得到公式： $\sigma^2=k\times(S_{out}-S_{off})$ $\sigma：噪声$ $k: 转换系数$ $S_{out}: 信号平均值方差$ $S_{off}：本底值方差$ 我们不仅可以通过信号饱和来确定满阱容量，还能">
+<meta property="og:description" content="在前篇的文章中，用输入输出来测量FWC。同时，当有了一组不同曝光时间的数据时，可以通过计算出噪声来确定满阱值。 根据之前的PTC介绍，当散粒噪声占主导时，可以得到公式： \(\sigma^2=k\times(S_{out}-S_{off})\) \(\sigma：噪声\) \(k: 转换系数\) \(S_{out}: 信号平均值方差\) \(S_{off}：本底值方差\) 我们不仅可以通过信号饱和">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/01/21/如何测量满阱容量-二/next_1.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/01/21/如何测量满阱容量-二/next_2.jpg">
 <meta property="og:updated_time" content="2019-01-28T05:37:12.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何测量满阱容量(二)">
-<meta name="twitter:description" content="在前篇的文章中，用输入输出来测量FWC。同时，当有了一组不同曝光时间的数据时，可以通过计算出噪声来确定满阱值。 根据之前的PTC介绍，当散粒噪声占主导时，可以得到公式： $\sigma^2=k\times(S_{out}-S_{off})$ $\sigma：噪声$ $k: 转换系数$ $S_{out}: 信号平均值方差$ $S_{off}：本底值方差$ 我们不仅可以通过信号饱和来确定满阱容量，还能">
+<meta name="twitter:description" content="在前篇的文章中，用输入输出来测量FWC。同时，当有了一组不同曝光时间的数据时，可以通过计算出噪声来确定满阱值。 根据之前的PTC介绍，当散粒噪声占主导时，可以得到公式： \(\sigma^2=k\times(S_{out}-S_{off})\) \(\sigma：噪声\) \(k: 转换系数\) \(S_{out}: 信号平均值方差\) \(S_{off}：本底值方差\) 我们不仅可以通过信号饱和">
 <meta name="twitter:image" content="http://yoursite.com/2019/01/21/如何测量满阱容量-二/next_1.jpg">
 
 
@@ -432,7 +432,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  650 字
+                  606 字
                 </span>
               
 
@@ -470,28 +470,28 @@
 
       
         <p>在前篇的<a href="/2019/01/15/如何测量满阱容量-一/" title="文章">文章</a>中，用输入输出来测量FWC。同时，当有了一组不同曝光时间的数据时，可以通过计算出噪声来确定满阱值。</p>
-<p>根据之前的<a href="">PTC介绍</a>，当<a href="https://zh.wikipedia.org/wiki/%E6%95%A3%E7%B2%92%E5%99%AA%E5%A3%B0" target="_blank" rel="noopener">散粒噪声</a>占主导时，可以得到公式：</p>
-<p>$\sigma^2=k\times(S_{out}-S_{off})$</p>
-<p>$\sigma：噪声$</p>
-<p>$k: 转换系数$</p>
-<p>$S_{out}: 信号平均值方差$</p>
-<p>$S_{off}：本底值方差$</p>
+<p>根据之前的<a href="">PTC介绍</a>，当<a href="https://zh.wikipedia.org/wiki/散粒噪声" target="_blank" rel="noopener">散粒噪声</a>占主导时，可以得到公式：</p>
+<p><span class="math inline">\(\sigma^2=k\times(S_{out}-S_{off})\)</span></p>
+<p><span class="math inline">\(\sigma：噪声\)</span></p>
+<p><span class="math inline">\(k: 转换系数\)</span></p>
+<p><span class="math inline">\(S_{out}: 信号平均值方差\)</span></p>
+<p><span class="math inline">\(S_{off}：本底值方差\)</span></p>
 <p>我们不仅可以通过信号饱和来确定满阱容量，还能通过噪声峰值来计算。满阱容量就是当噪声达到最高值时的点。</p>
-<h2>传感器满阱值大于ADC</h2>
+<h2 id="传感器满阱值大于adc">传感器满阱值大于ADC</h2>
 <p>在这种情况下，大多数传感器或摄像机ADC的最大值被设置为能使ADC范围覆盖传感器线性响应的输出部分。 如图一所示，ADC中定义系统最大输出水平，其中传感器噪声方差为曝光时间的函数。</p>
-<p><img src="/2019/01/21/如何测量满阱容量-二/next_1.jpg" title="图一：噪声随曝光时间的变化。"></p>
+<img src="/2019/01/21/如何测量满阱容量-二/next_1.jpg" title="图一：噪声随曝光时间的变化。">
 <p>可以从图中看出，随着曝光时间增加，噪声方差单调增长，然后突然降低到0。这个拐点就代表了传感器的满阱值，此时，噪声方差峰值为194600DN。</p>
-<p>根据公式，满阱值等于方差峰值除以K，减去本底值方差除K，  即 (194,600/k) – (7667/k) = 63,887 – 2517 = 61,370 DN。</p>
-<h2>传感器满阱值小于ADC</h2>
-<p>这种情况下满阱电荷容量需要明确是探测器饱和对应的值还是探测器线性部分对应的拐点。前者定为FWC&lt;sub&gt;sat&lt;/sub&gt;，后者定为FWC&lt;sub&gt;lin&lt;/sub&gt;。通常情况下，FWC&lt;sub&gt;lin&lt;/sub&gt;定义为探测器输出和理想直线的偏差最大为3%的点，或是传感器输出线性度达到97%或更高的点。 根据该定义并将其转换为噪声方差，现在FWC&lt;sub&gt;lin&lt;/sub&gt;将定义在噪声方差偏离最大k×（3％）= 4.5％的点。如图二所示。</p>
-<p><img src="/2019/01/21/如何测量满阱容量-二/next_2.jpg" title="图二：噪声随曝光时间的变化。"></p>
+<p>根据公式，满阱值等于方差峰值除以K，减去本底值方差除K， 即 (194,600/k) – (7667/k) = 63,887 – 2517 = 61,370 DN。</p>
+<h2 id="传感器满阱值小于adc">传感器满阱值小于ADC</h2>
+<p>这种情况下满阱电荷容量需要明确是探测器饱和对应的值还是探测器线性部分对应的拐点。前者定为FWC<sub>sat</sub>，后者定为FWC<sub>lin</sub>。通常情况下，FWC<sub>lin</sub>定义为探测器输出和理想直线的偏差最大为3%的点，或是传感器输出线性度达到97%或更高的点。 根据该定义并将其转换为噪声方差，现在FWC<sub>lin</sub>将定义在噪声方差偏离最大k×（3％）= 4.5％的点。如图二所示。</p>
+<img src="/2019/01/21/如何测量满阱容量-二/next_2.jpg" title="图二：噪声随曝光时间的变化。">
 <p>可以从图中看出，随着曝光时间增加，噪声方差单调增长，然后缓慢降低到0。这表明了ADC大于传感器的满阱值。这个拐点就代表了传感器的满阱值，此时，噪声方差峰值为41260DN。</p>
-<p>FWC&lt;sub&gt;sat&lt;/sub&gt;： (41,260/k) – (2389/k) = 27,013 DN</p>
+<p>FWC<sub>sat</sub>： (41,260/k) – (2389/k) = 27,013 DN</p>
 <p>同样，根据探测器的非线性度曲线，可以看出其线性度偏离了4.5%的点处的DN值为39780DN，因此，</p>
-<p>FWC&lt;sub&gt;lin&lt;/sub&gt;： (39,780/k) – (2389/k) = 25,044 DN</p>
+<p>FWC<sub>lin</sub>： (39,780/k) – (2389/k) = 25,044 DN</p>
 <p><strong>参考资料</strong>：</p>
 <ul>
-<li><a href="https://harvestimaging.com/blog/?p=1249" target="_blank" rel="noopener">https://harvestimaging.com/blog/?p=1249</a></li>
+<li><a href="https://harvestimaging.com/blog/?p=1249" class="uri" target="_blank" rel="noopener">https://harvestimaging.com/blog/?p=1249</a></li>
 </ul>
 
       
@@ -621,7 +621,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -632,7 +632,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -704,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">传感器满阱值大于ADC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">传感器满阱值小于ADC</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#传感器满阱值大于adc"><span class="nav-number">1.</span> <span class="nav-text">传感器满阱值大于ADC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传感器满阱值小于adc"><span class="nav-number">2.</span> <span class="nav-text">传感器满阱值小于ADC</span></a></li></ol></div>
             
 
           </div>
