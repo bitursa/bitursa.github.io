@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[如何测量MTF(二)]]></title>
+    <url>%2F2019%2F03%2F12%2F%E5%A6%82%E4%BD%95%E6%B5%8B%E9%87%8FMTF-%E4%BA%8C%2F</url>
+    <content type="text"><![CDATA[本篇主要介绍下倾斜刃边法来测量MTF。几篇介绍倾斜刃边法的文献： M. Estribeau and P. Magnan., in SPIE Proceedings, Vol. 5251, Sept. 2003 T. Dutton et al. in SPIE Proceedings, Vol. 4486, 2002, pp. 219-246 [P.B. Burns, in Proceedings IS&amp;T, 2000, pp 135-138] [S.E. Reichenback et al. In Optical Engineering, pp. 170-177, 1991.] 倾斜刃边法是少数成为ISO图像传感器和相机测量的标准之一，编号12233。 倾斜刃边法介绍： 将一个垂直或者水平方向的边缘成像到探测器上，垂边需要与探测器的列方向稍微有所倾斜，倾斜的角度不重要， 一般建议在2°-10°之间。在这个范围内的斜边能得到最好的MTF测量结果。 探测器的每一行都能提供一个不同的边缘扩散函数(Edge Spread Function, ESF)，通过图像倾斜边缘的特定列中的像素值，可以得到空间频率响应SFR(Spatial Frequency Response)。 通过SFR，可以由微分或者差分得到线扩散函数(Line Spread Function)。 最后对LSF进行傅里叶变换，结果就是光学传递函数OTF的模，即为调制传递函数MTF。 倾斜刃边法仿真说明： 首先，合成一幅倾斜刃边图像，斜边倾斜角度为4°。在黑白过渡的区域选择一块200x300大小的区域。如图1所示。 然后选中特定的一列(本例中为第96列)，并记录该列中的所有像素值，已生成SFR。结果如图2所示。左侧为SFR坐标轴，右侧为LSF坐标轴。 接着SFR求导或差分得到LSF。 通过FFT，可以计算得到MTF。图3画出了FFT幅值与空间频率的关系。注意MTF被归一化，其值为零输入频率(= DC)，而空间频率归一化为传感器的空间采样频率。在这个模拟的例子中,像素间距等于6.5µm。 图3给出了理解结果与仿真结果的对比。从图中可以看出两条曲线重合的很好，说明倾斜刃边法是没有问题的。]]></content>
+      <categories>
+        <category>MTF测试</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[如何测量MTF(一)]]></title>
     <url>%2F2019%2F02%2F20%2F%E5%A6%82%E4%BD%95%E6%B5%8B%E9%87%8FMTF-%E4%B8%80%2F</url>
     <content type="text"><![CDATA[​ 简单来说，调制传递函数（Modulation Transfer Funciton）是表征成像器件空间分辨率的一种参数，其可以是成像传感器、镜头、透镜或者是一个完整的相机。它是光学传递函数的模，可由点扩展函数的傅里叶变换得到。 Harvest Imaging Blog 关于如何测量MTF的几篇介绍： How to Measure Modulation Transfer Function(1) How to Measure Modulation Transfer Function(2) How to Measure Modulation Transfer Function(3) How to Measure Modulation Transfer Function(4) How to Measure Modulation Transfer Function(5) How to Measure Modulation Transfer Function(6) How to Measure Modulation Transfer Function(7) How to Measure Modulation Transfer Function(8) How to Measure Modulation Transfer Function(9) Imatest 关于MTF的介绍 Sharpening 接下来主要将博客里的东西整理一下。]]></content>
@@ -19,7 +27,7 @@
   <entry>
     <title><![CDATA[计算MTF软件说明]]></title>
     <url>%2F2019%2F02%2F14%2F%E8%AE%A1%E7%AE%97MTF%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E%2F</url>
-    <content type="text"><![CDATA[介绍几款常用的计算MTF的软件 Imatest Master Imatest软件是全球使用最广泛的数字图像质量分析软件。它包括全功能的图像质量测试，支持绝大多数的标准测试卡。 找了个试用版装了一下，功能实在是太多了，价格感人... QuickMTF QuickMTF是另一款比较强大的软件，同样也是收费的。 演示视频看上去功能很强大，能够实现实时运算。 ImageJ计算MTF ImageJ是一个基于java的公共的图像处理软件，SE_MTF是ImageJ的一款插件，使用了Slanted Edge Method来计算MTF。 ImageJ SE_MTF使用方法 下载ImageJ及SE_MTF插件 将查件放在/plugins文件夹下 打开ImageJ选择图像，选择计算区域（必须是从黑到白，左边是黑色，右边是白色，否则需要旋转图像） 打开插件SE_MTF，计算MTF SFRMAT3计算MTF SFRMAT3是一款Matlab编写的计算软件 下载地址 SFRMAT3使用方法 打开 MATLAB 进入sfrmat3路径下打开sfrmat3.m 运行sfrmat3.m，选择图像 出现&quot;Data Sampling &amp; weights&quot;窗口，一般情况下选择确定即可 鼠标滑动，选择计算的区域 得到结果并保存到.xls文件 MTFmapper MTFmapper是一款开源软件，但是具体怎么用还没搞明白。。 作者博客介绍了一些理论知识。 Mitre SFR Mitre SFR是用C写的，用终端来进行操作，具体使用方法软件内部有介绍。]]></content>
+    <content type="text"><![CDATA[介绍几款常用的计算MTF的软件 Imatest Master Imatest软件是全球使用最广泛的数字图像质量分析软件。它包括全功能的图像质量测试，支持绝大多数的标准测试卡。 找了个试用版装了一下，功能实在是太多了，价格感人... QuickMTF QuickMTF是另一款比较强大的软件，同样也是收费的。 演示视频看上去功能很强大，能够实现实时运算。 ImageJ计算MTF ImageJ是一个基于java的公共的图像处理软件，SE_MTF是ImageJ的一款插件，使用了Slanted Edge Method来计算MTF。 ### ImageJ SE_MTF使用方法 * 下载ImageJ及SE_MTF插件 * 将查件放在/plugins文件夹下 * 打开ImageJ选择图像，选择计算区域（必须是从黑到白，左边是黑色，右边是白色，否则需要旋转图像） * 打开插件SE_MTF，计算MTF SFRMAT3计算MTF SFRMAT3是一款Matlab编写的计算软件 下载地址 SFRMAT3使用方法 打开 MATLAB 进入sfrmat3路径下打开sfrmat3.m 运行sfrmat3.m，选择图像 出现&quot;Data Sampling &amp; weights&quot;窗口，一般情况下选择确定即可 鼠标滑动，选择计算的区域 得到结果并保存到.xls文件 MTFmapper MTFmapper是一款开源软件，但是具体怎么用还没搞明白。。 作者博客介绍了一些理论知识。 Mitre SFR Mitre SFR是用C写的，用终端来进行操作，具体使用方法软件内部有介绍。]]></content>
   </entry>
   <entry>
     <title><![CDATA[常规光电测试项目测试方法]]></title>

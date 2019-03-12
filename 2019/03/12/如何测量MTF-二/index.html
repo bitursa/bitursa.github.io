@@ -101,17 +101,21 @@
 
 
 
-<meta name="description" content="​ 简单来说，调制传递函数（Modulation Transfer Funciton）是表征成像器件空间分辨率的一种参数，其可以是成像传感器、镜头、透镜或者是一个完整的相机。它是光学传递函数的模，可由点扩展函数的傅里叶变换得到。 Harvest Imaging Blog 关于如何测量MTF的几篇介绍：  How to Measure Modulation Transfer Function(1)">
+<meta name="description" content="本篇主要介绍下倾斜刃边法来测量MTF。几篇介绍倾斜刃边法的文献：  M. Estribeau and P. Magnan., in SPIE Proceedings, Vol. 5251, Sept. 2003 T. Dutton et al. in SPIE Proceedings, Vol. 4486, 2002, pp. 219-246 [P.B. Burns, in Proceedings">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何测量MTF(一)">
-<meta property="og:url" content="http://yoursite.com/2019/02/20/如何测量MTF-一/index.html">
+<meta property="og:title" content="如何测量MTF(二)">
+<meta property="og:url" content="http://yoursite.com/2019/03/12/如何测量MTF-二/index.html">
 <meta property="og:site_name" content="张至诚的博客">
-<meta property="og:description" content="​ 简单来说，调制传递函数（Modulation Transfer Funciton）是表征成像器件空间分辨率的一种参数，其可以是成像传感器、镜头、透镜或者是一个完整的相机。它是光学传递函数的模，可由点扩展函数的傅里叶变换得到。 Harvest Imaging Blog 关于如何测量MTF的几篇介绍：  How to Measure Modulation Transfer Function(1)">
+<meta property="og:description" content="本篇主要介绍下倾斜刃边法来测量MTF。几篇介绍倾斜刃边法的文献：  M. Estribeau and P. Magnan., in SPIE Proceedings, Vol. 5251, Sept. 2003 T. Dutton et al. in SPIE Proceedings, Vol. 4486, 2002, pp. 219-246 [P.B. Burns, in Proceedings">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-12T07:21:04.263Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/12/如何测量MTF-二/roi.bmp">
+<meta property="og:image" content="http://yoursite.com/2019/03/12/如何测量MTF-二/SFR.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/12/如何测量MTF-二/MTF.jpg">
+<meta property="og:updated_time" content="2019-03-12T08:23:54.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何测量MTF(一)">
-<meta name="twitter:description" content="​ 简单来说，调制传递函数（Modulation Transfer Funciton）是表征成像器件空间分辨率的一种参数，其可以是成像传感器、镜头、透镜或者是一个完整的相机。它是光学传递函数的模，可由点扩展函数的傅里叶变换得到。 Harvest Imaging Blog 关于如何测量MTF的几篇介绍：  How to Measure Modulation Transfer Function(1)">
+<meta name="twitter:title" content="如何测量MTF(二)">
+<meta name="twitter:description" content="本篇主要介绍下倾斜刃边法来测量MTF。几篇介绍倾斜刃边法的文献：  M. Estribeau and P. Magnan., in SPIE Proceedings, Vol. 5251, Sept. 2003 T. Dutton et al. in SPIE Proceedings, Vol. 4486, 2002, pp. 219-246 [P.B. Burns, in Proceedings">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/12/如何测量MTF-二/roi.bmp">
 
 
 
@@ -140,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/20/如何测量MTF-一/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/12/如何测量MTF-二/">
 
 
 
 
 
-  <title>如何测量MTF(一) | 张至诚的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>如何测量MTF(二) | 张至诚的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -311,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/如何测量MTF-一/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/如何测量MTF-二/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ursa">
@@ -328,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">如何测量MTF(一)</h1>
+          <h1 class="post-title" itemprop="name headline">如何测量MTF(二)</h1>
         
 
         <div class="post-meta">
@@ -340,8 +344,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T16:29:51+08:00">
-                2019-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-12T15:27:15+08:00">
+                2019-03-12
               </time>
             
 
@@ -356,7 +360,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-12T15:21:04+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-12T16:23:54+08:00">
                 2019-03-12
               </time>
             
@@ -393,8 +397,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/20/如何测量MTF-一/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/20/如何测量MTF-一/" itemprop="commentCount"></span>
+                <a href="/2019/03/12/如何测量MTF-二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/12/如何测量MTF-二/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -402,7 +406,7 @@
 
           
           
-             <span id="/2019/02/20/如何测量MTF-一/" class="leancloud_visitors" data-flag-title="如何测量MTF(一)">
+             <span id="/2019/03/12/如何测量MTF-二/" class="leancloud_visitors" data-flag-title="如何测量MTF(二)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -429,7 +433,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  180 字
+                  540 字
                 </span>
               
 
@@ -445,7 +449,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -466,24 +470,28 @@
       
 
       
-        <p>​ 简单来说，调制传递函数（Modulation Transfer Funciton）是表征成像器件空间分辨率的一种参数，其可以是成像传感器、镜头、透镜或者是一个完整的相机。它是<a href="https://en.wikipedia.org/wiki/Optical_transfer_function" target="_blank" rel="noopener">光学传递函数</a>的模，可由<a href="https://en.wikipedia.org/wiki/Point_spread_function" target="_blank" rel="noopener">点扩展函数</a>的傅里叶变换得到。</p>
-<h2 id="harvest-imaging-blog-关于如何测量mtf的几篇介绍">Harvest Imaging Blog 关于如何测量MTF的几篇介绍：</h2>
+        <p>本篇主要介绍下倾斜刃边法来测量MTF。几篇介绍倾斜刃边法的文献：</p>
 <ul>
-<li><a href="http://harvestimaging.com/blog/?p=1294" target="_blank" rel="noopener">How to Measure Modulation Transfer Function(1)</a></li>
-<li><a href="http://harvestimaging.com/blog/?p=1310" target="_blank" rel="noopener">How to Measure Modulation Transfer Function(2)</a></li>
-<li><a href="http://harvestimaging.com/blog/?p=1321" target="_blank" rel="noopener">How to Measure Modulation Transfer Function(3)</a></li>
-<li><a href="http://harvestimaging.com/blog/?p=1328" target="_blank" rel="noopener">How to Measure Modulation Transfer Function(4)</a></li>
-<li><a href="http://harvestimaging.com/blog/?p=1337" target="_blank" rel="noopener">How to Measure Modulation Transfer Function(5)</a></li>
-<li><a href="http://harvestimaging.com/blog/?p=1353" target="_blank" rel="noopener">How to Measure Modulation Transfer Function(6)</a></li>
-<li><a href="http://harvestimaging.com/blog/?p=1366" target="_blank" rel="noopener">How to Measure Modulation Transfer Function(7)</a></li>
-<li><a href="http://harvestimaging.com/blog/?p=1374" target="_blank" rel="noopener">How to Measure Modulation Transfer Function(8)</a></li>
-<li><a href="http://harvestimaging.com/blog/?p=1381" target="_blank" rel="noopener">How to Measure Modulation Transfer Function(9)</a></li>
+<li><a href="http://oatao.univ-toulouse.fr/303/" target="_blank" rel="noopener">M. Estribeau and P. Magnan., in SPIE Proceedings, Vol. 5251, Sept. 2003</a></li>
+<li><a href="http://www.imagesensors.org/Past%20Workshops/2003%20Workshop/2003%20Papers/35%20Dutton%20et%20al.pdf" target="_blank" rel="noopener">T. Dutton et al. in SPIE Proceedings, Vol. 4486, 2002, pp. 219-246</a></li>
+<li>[P.B. Burns, in Proceedings IS&amp;T, 2000, pp 135-138]</li>
+<li>[S.E. Reichenback et al. In Optical Engineering, pp. 170-177, 1991.]</li>
 </ul>
-<h2 id="imatest-关于mtf的介绍">Imatest 关于MTF的介绍</h2>
+<h4 id="倾斜刃边法是少数成为iso图像传感器和相机测量的标准之一编号12233">倾斜刃边法是少数成为ISO图像传感器和相机测量的标准之一，编号12233。</h4>
+<h2 id="倾斜刃边法介绍"><strong>倾斜刃边法</strong>介绍：</h2>
 <ul>
-<li><a href="http://www.imatest.com/docs/sharpening/" target="_blank" rel="noopener">Sharpening</a></li>
+<li>将一个垂直或者水平方向的边缘成像到探测器上，垂边需要与探测器的列方向稍微有所倾斜，倾斜的角度不重要， 一般建议在2°-10°之间。在这个范围内的斜边能得到最好的MTF测量结果。</li>
+<li>探测器的每一行都能提供一个不同的边缘扩散函数(Edge Spread Function, ESF)，通过图像倾斜边缘的特定列中的像素值，可以得到空间频率响应SFR(Spatial Frequency Response)。</li>
+<li>通过SFR，可以由微分或者差分得到线扩散函数(Line Spread Function)。</li>
+<li>最后对LSF进行傅里叶变换，结果就是光学传递函数OTF的模，即为调制传递函数MTF。</li>
 </ul>
-<h4 id="接下来主要将博客里的东西整理一下">接下来主要将博客里的东西整理一下。</h4>
+<h2 id="倾斜刃边法仿真说明">倾斜刃边法仿真说明：</h2>
+<ul>
+<li>首先，合成一幅倾斜刃边图像，斜边倾斜角度为4°。在黑白过渡的区域选择一块200x300大小的区域。如图1所示。 <img src="/2019/03/12/如何测量MTF-二/roi.bmp" title="倾斜刃边图像"></li>
+<li>然后选中特定的一列(本例中为第96列)，并记录该列中的所有像素值，已生成SFR。结果如图2所示。左侧为SFR坐标轴，右侧为LSF坐标轴。 <img src="/2019/03/12/如何测量MTF-二/SFR.jpg" title="SFR与LSF图像"></li>
+<li>接着SFR求导或差分得到LSF。</li>
+<li>通过FFT，可以计算得到MTF。图3画出了FFT幅值与空间频率的关系。注意MTF被归一化，其值为零输入频率(= DC)，而空间频率归一化为传感器的空间采样频率。在这个模拟的例子中,像素间距等于6.5µm。 <img src="/2019/03/12/如何测量MTF-二/MTF.jpg" title="MTF图像"> 图3给出了理解结果与仿真结果的对比。从图中可以看出两条曲线重合的很好，说明倾斜刃边法是没有问题的。</li>
+</ul>
 
       
     </div>
@@ -518,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/15/实验用光源/" rel="next" title="实验用光源">
-                <i class="fa fa-chevron-left"></i> 实验用光源
+              <a href="/2019/02/20/如何测量MTF-一/" rel="next" title="如何测量MTF(一)">
+                <i class="fa fa-chevron-left"></i> 如何测量MTF(一)
               </a>
             
           </div>
@@ -527,10 +535,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/12/如何测量MTF-二/" rel="prev" title="如何测量MTF(二)">
-                如何测量MTF(二) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -695,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#harvest-imaging-blog-关于如何测量mtf的几篇介绍"><span class="nav-number">1.</span> <span class="nav-text">Harvest Imaging Blog 关于如何测量MTF的几篇介绍：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#imatest-关于mtf的介绍"><span class="nav-number">2.</span> <span class="nav-text">Imatest 关于MTF的介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接下来主要将博客里的东西整理一下"><span class="nav-number">2.0.1.</span> <span class="nav-text">接下来主要将博客里的东西整理一下。</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#倾斜刃边法是少数成为iso图像传感器和相机测量的标准之一编号12233"><span class="nav-number">1.</span> <span class="nav-text">倾斜刃边法是少数成为ISO图像传感器和相机测量的标准之一，编号12233。</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#倾斜刃边法介绍"><span class="nav-number"></span> <span class="nav-text">倾斜刃边法介绍：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#倾斜刃边法仿真说明"><span class="nav-number"></span> <span class="nav-text">倾斜刃边法仿真说明：</span></a></li></div>
             
 
           </div>
@@ -836,9 +840,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/02/20/如何测量MTF-一/';
-          this.page.identifier = '2019/02/20/如何测量MTF-一/';
-          this.page.title = '如何测量MTF(一)';
+          this.page.url = 'http://yoursite.com/2019/03/12/如何测量MTF-二/';
+          this.page.identifier = '2019/03/12/如何测量MTF-二/';
+          this.page.title = '如何测量MTF(二)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://Ursa.disqus.com/embed.js';
