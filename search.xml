@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[如何测量MTF(一)]]></title>
     <url>%2F2019%2F02%2F20%2F%E5%A6%82%E4%BD%95%E6%B5%8B%E9%87%8FMTF-%E4%B8%80%2F</url>
-    <content type="text"><![CDATA[​ 简单来说，调制传递函数（Modulation Transfer Funciton）是表征成像器件空间分辨率的一种参数，其可以是成像传感器、镜头、透镜或者是一个完整的相机。它是光学传递函数的模，可由点扩展函数的傅里叶变换得到。 ​ MTF的测量有多种方法： slit image Knife edge Laser-speckle technique imaging of sine-wave patterns ​ 本篇中测量MTF使用的方法使用了专业的测试图表。该方法基于Anke Neumann的硕士论文Verfahren zur Aufloesungsmessung digitaler Kameras ，其中使用的测试图是西门子星，如图1所示。 ​ 可以看到图像中间是一个有72个辐条的西门子星，可以看出，如果远离图表中心，图表上黑色和白色结构之间的距离会变大。换句话说，正弦曲线图案的空间频率在西门子星的外部变得越来越低，并且越来越接近西门子星的中心。在西门子恒星的中心周围，正弦图案的空间频率甚至太高，无法通过被测相机解决并出现混叠现象。在西门子明星的中心，一个小圆圈包括2个白色和两个黑色的四分之一。这些将在测量中发挥非常重要的作用。 测量步骤如下： 拍摄50张星表图像，计算平均值。记为Image_MTF 同照度下，拍摄50张平场图像，计算平均值。记为Image_light 拍摄50张暗场图像，计算平均值，记为Image_dark Image_MTF和Image_light分别减去Image_dark, 由(Image_light – Image_dark)得到图像Image_gain]]></content>
+    <content type="text"><![CDATA[​ 简单来说，调制传递函数（Modulation Transfer Funciton）是表征成像器件空间分辨率的一种参数，其可以是成像传感器、镜头、透镜或者是一个完整的相机。它是光学传递函数的模，可由点扩展函数的傅里叶变换得到。 Harvest Imaging Blog 关于如何测量MTF的几篇介绍： How to Measure Modulation Transfer Function(1) How to Measure Modulation Transfer Function(2) How to Measure Modulation Transfer Function(3) How to Measure Modulation Transfer Function(4) How to Measure Modulation Transfer Function(5) How to Measure Modulation Transfer Function(6) How to Measure Modulation Transfer Function(7) How to Measure Modulation Transfer Function(8) How to Measure Modulation Transfer Function(9) Imatest 关于MTF的介绍 Sharpening 接下来主要将博客里的东西整理一下。]]></content>
       <categories>
         <category>MTF测试</category>
       </categories>
