@@ -101,19 +101,24 @@
 
 
 
-<meta name="description" content="光电测试中使用的光源  Energetiq 公司开发的宽带白光光源，采用激光泵浦的方式维持等离子体放电发光， 避免了使用电极所带来的种种缺陷。 特点和优势:  SMA 光纤耦合输出，便于使用 高效的光学收集装置 超高亮度，覆盖波段范围 UV-Vis-NIR (190nm - 2100nm) 无需复合灯源(可替代氘灯 / 钨灯 / 氙弧光灯)，简化光学系统 优异的空间稳定性，适于重复测量 优异的短时">
+<meta name="description" content="​	最近在看计算MTF的算法相关的内容，在网上看见了介绍SFR的算法详解，就扒过来了。链接 ​	这几篇文章写的是SFR算法，主要根据相关的概念及其对应的标准和源码，来看看SFR究竟是什么？这里先简单介绍下一些基本的概念。 ​	参考链接1 ​	参看链接2 什么是MTF ​	MTF算法是分析镜头解像能力的算法，其全称是Modulation Transfer Function(调制传递函数)。为了理解这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实验用光源">
-<meta property="og:url" content="http://yoursite.com/2019/02/15/实验用光源/index.html">
+<meta property="og:title" content="SFR算法详解">
+<meta property="og:url" content="http://yoursite.com/2019/03/15/SFR算法详解/index.html">
 <meta property="og:site_name" content="张至诚的博客">
-<meta property="og:description" content="光电测试中使用的光源  Energetiq 公司开发的宽带白光光源，采用激光泵浦的方式维持等离子体放电发光， 避免了使用电极所带来的种种缺陷。 特点和优势:  SMA 光纤耦合输出，便于使用 高效的光学收集装置 超高亮度，覆盖波段范围 UV-Vis-NIR (190nm - 2100nm) 无需复合灯源(可替代氘灯 / 钨灯 / 氙弧光灯)，简化光学系统 优异的空间稳定性，适于重复测量 优异的短时">
+<meta property="og:description" content="​	最近在看计算MTF的算法相关的内容，在网上看见了介绍SFR的算法详解，就扒过来了。链接 ​	这几篇文章写的是SFR算法，主要根据相关的概念及其对应的标准和源码，来看看SFR究竟是什么？这里先简单介绍下一些基本的概念。 ​	参考链接1 ​	参看链接2 什么是MTF ​	MTF算法是分析镜头解像能力的算法，其全称是Modulation Transfer Function(调制传递函数)。为了理解这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/02/15/实验用光源/LDLS.jpg">
-<meta property="og:updated_time" content="2019-02-15T09:22:47.290Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/chart.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/flowchart.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/centroid.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/4x.jpg">
+<meta property="og:updated_time" content="2019-03-15T09:26:05.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="实验用光源">
-<meta name="twitter:description" content="光电测试中使用的光源  Energetiq 公司开发的宽带白光光源，采用激光泵浦的方式维持等离子体放电发光， 避免了使用电极所带来的种种缺陷。 特点和优势:  SMA 光纤耦合输出，便于使用 高效的光学收集装置 超高亮度，覆盖波段范围 UV-Vis-NIR (190nm - 2100nm) 无需复合灯源(可替代氘灯 / 钨灯 / 氙弧光灯)，简化光学系统 优异的空间稳定性，适于重复测量 优异的短时">
-<meta name="twitter:image" content="http://yoursite.com/2019/02/15/实验用光源/LDLS.jpg">
+<meta name="twitter:title" content="SFR算法详解">
+<meta name="twitter:description" content="​	最近在看计算MTF的算法相关的内容，在网上看见了介绍SFR的算法详解，就扒过来了。链接 ​	这几篇文章写的是SFR算法，主要根据相关的概念及其对应的标准和源码，来看看SFR究竟是什么？这里先简单介绍下一些基本的概念。 ​	参考链接1 ​	参看链接2 什么是MTF ​	MTF算法是分析镜头解像能力的算法，其全称是Modulation Transfer Function(调制传递函数)。为了理解这">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/15/SFR算法详解/1.png">
 
 
 
@@ -142,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/15/实验用光源/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/15/SFR算法详解/">
 
 
 
 
 
-  <title>实验用光源 | 张至诚的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>SFR算法详解 | 张至诚的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -313,7 +318,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/实验用光源/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/SFR算法详解/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ursa">
@@ -330,7 +335,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">实验用光源</h1>
+          <h1 class="post-title" itemprop="name headline">SFR算法详解</h1>
         
 
         <div class="post-meta">
@@ -342,8 +347,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-15T17:16:05+08:00">
-                2019-02-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T15:44:28+08:00">
+                2019-03-15
               </time>
             
 
@@ -358,8 +363,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-15T17:22:47+08:00">
-                2019-02-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-15T17:26:05+08:00">
+                2019-03-15
               </time>
             
           </span>
@@ -377,8 +382,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/常规光电测试/" itemprop="url" rel="index">
-                    <span itemprop="name">常规光电测试</span>
+                  <a href="/categories/MTF测试/" itemprop="url" rel="index">
+                    <span itemprop="name">MTF测试</span>
                   </a>
                 </span>
 
@@ -395,8 +400,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/15/实验用光源/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/15/实验用光源/" itemprop="commentCount"></span>
+                <a href="/2019/03/15/SFR算法详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/15/SFR算法详解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -404,7 +409,7 @@
 
           
           
-             <span id="/2019/02/15/实验用光源/" class="leancloud_visitors" data-flag-title="实验用光源">
+             <span id="/2019/03/15/SFR算法详解/" class="leancloud_visitors" data-flag-title="SFR算法详解">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -431,7 +436,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  249 字
+                  2.6k 字
                 </span>
               
 
@@ -447,7 +452,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -468,26 +473,130 @@
       
 
       
-        <h2>光电测试中使用的光源</h2>
-<p><img src="/2019/02/15/实验用光源/LDLS.jpg" title="激光驱动白光光源 LDLS"></p>
-<p>Energetiq 公司开发的<a href="https://img1.17img.cn/17img/files/201606/attachment/cceebc58-f0cb-48a8-8fb8-ac8523f7bc5e.pdf" target="_blank" rel="noopener">宽带白光光源</a>，采用激光泵浦的方式维持等离子体放电发光， 避免了使用电极所带来的种种缺陷。</p>
-<h4>特点和优势:</h4>
-<ul>
-<li>SMA 光纤耦合输出，便于使用</li>
-<li>高效的光学收集装置</li>
-<li>超高亮度，覆盖波段范围 UV-Vis-NIR (190nm - 2100nm)</li>
-<li>无需复合灯源(可替代氘灯 / 钨灯 / 氙弧光灯)，简化光学系统</li>
-<li>优异的空间稳定性，适于重复测量</li>
-<li>优异的短时和长期功率稳定性，适于 重复测量</li>
-<li>无电极工作，更低维护成本</li>
-</ul>
-<h4>技术参数:</h4>
-<ul>
-<li>光谱范围: 190nm -2100nm * 典型灯泡寿命 &gt; 9,000 小时</li>
-<li>SMA 光纤耦合输出:NA 0.22</li>
-<li>灯源尺寸 82.3 x 85.7 x 76.2 mm (3.2 x 3.4 x3.0 in) ，重量 0.7 kg (1.5 lbs)</li>
-<li>电源尺寸 107 x 111 x 254 mm (4.2 x 4.4 x 10 in) (excl feet)，重量 1.4kg (3 lbs)</li>
-</ul>
+        <p>​	最近在看计算MTF的算法相关的内容，在网上看见了介绍SFR的算法详解，就扒过来了。<a href="http://www.itboth.com/d/jEjYbu/sfr" target="_blank" rel="noopener">链接</a>
+​	这几篇文章写的是SFR算法，主要根据相关的概念及其对应的标准和源码，来看看SFR究竟是什么？这里先简单介绍下一些基本的概念。</p>
+<p>​	<a href="http://wenku.baidu.com/view/53ec503383c4bb4cf7ecd146.html" target="_blank" rel="noopener">参考链接1</a></p>
+<p>​	<a href="http://wenku.baidu.com/view/24ca93cbda38376baf1faeb4.html" target="_blank" rel="noopener">参看链接2</a></p>
+<h2>什么是MTF</h2>
+<p>​	MTF算法是分析镜头解像能力的算法，其全称是Modulation Transfer Function(调制传递函数)。为了理解这个，首先需要知道什么是调制Modulation。
+​	Modulation类似于对比度的概念，其数学表达公式如下：
+$$
+M = \frac{I_{max}-I_{min}}{I_{max}+I_{min}}
+$$
+​	它表示的是亮度最大值和亮度最小值的差值除以它们的和。如果在一张图像中，I&lt;sub&gt;max&lt;/sub&gt; = 255，I&lt;sub&gt;min&lt;/sub&gt;=10，那么M = 0.9245。而对比度则是亮度最大值除以亮度最小值，在这里等于25.5.  可以这样理解:Modulation是归一化之后的对比度。</p>
+<p>​	然而，在相机拍照的过程中，实际景象的M&lt;sub&gt;i&lt;/sub&gt;与拍摄得到图像的M&lt;sub&gt;o&lt;/sub&gt;&gt;并不是一致的。对此，有这样的传递函数
+$$
+MTF = \frac{M_o}{M_i}
+$$
+​	它表示的是经过相机拍摄后对比度的变化。如果MTF=1，那表示成像的质量非常的高，基本上无损传输了。它衡量的是该镜头将原图像转化到具体成像之间的传递能力。</p>
+<p>​	而在实际测试的过程中，通常都是采用的如下所示的线对来分析计算。</p>
+<p><img src="/2019/03/15/SFR算法详解/1.png" title="线对图"></p>
+<p>​	在上图中，上面的是原图像，下面表示相机拍摄得到的图像。可以看出线对的边缘经过镜头之后明显变得模糊，并且线对越密越模糊，相应的MTF也就越低。</p>
+<p>​	而MTF通常跟空间频率的关系比较密切。空间频率指的是线对的密度，如果单位为cycle/pixel，则是表示在一个像素里有多少个线对，黑白线对为一个周期。</p>
+<p>​	而SFR（spatial frequency response）表示空间频率响应，表示的也是相机的解像能力，在这个层面上，MTF与SFR是一样的意思。</p>
+<h2>MTF50，MTF50P</h2>
+<p>​	在表示相机图像解析力时，通常采用MTF50或者MTF50P。</p>
+<p>​	MTF50表示的是MTF为最大值的50%（即MTF=0.5）时，对应的空间频率。</p>
+<p>​	由于在图像拍摄过程中，图像处理模块有可能会对图像进行锐利化，对MTF的数值有所影响，而为了避免这样的影响，则规定MTF50P是相机拍摄后的图像的MTF最大值的50%对应的空间频率。</p>
+<h2>SFR算法详解</h2>
+<p>​	这里主要参考ISO 12233标准所描述的SFR算法过程，详见《<strong>ISO 12233-2000 Camera resolution measurement</strong>》中6.3 Saptial frequency response。</p>
+<h4>水平SFR及垂直SFR</h4>
+<p>​	SFR是通过分析相机拍摄到的图像中一个黑色到白色的斜边而得到的，即下图中所示的红框部分。其中，区域1的垂直斜边用于计算水平SFR，而区域2的水平斜边用于计算垂直SFR。</p>
+<p><img src="/2019/03/15/SFR算法详解/chart.jpg" title="分辨率板"></p>
+<p>​	在后续的算法中，我们讨论的是怎么计算水平SFR，而垂直SFR可以通过旋转90°之后进行跟水平SFR同样的算法获得。</p>
+<h3>算法流程</h3>
+<p>​	下图为具体算法流程，该流程与标准中的有所差异，结合了标准中所建议的流程及实际代码实现的流程，原因是<strong>标准中的流程图与标准中附录A的程序代码、附录C的算法原理存在差异</strong>。&lt;!--我用的是ISO12233 2014版本，这一版中没有了6.3节，也没有附录代码--&gt;</p>
+<p>​	以下为简要过程：（图中对应的RGB,GRAY等表示传输进入当前模块的数据类型。）</p>
+<p>​	<img src="/2019/03/15/SFR算法详解/flowchart.jpg" title="SFR 算法流程图"></p>
+<ol>
+<li>在相机获取到的RGB图像数据中选择对应垂直斜边ROI，并将其转化为Gray ROI;</li>
+<li>对得到的Gray ROI数据进行线性化，得到linear ROI数据；</li>
+<li>计算每一行的centroid，即图像重心，这样能够得到每一行数据的边缘位置。</li>
+<li>获取到的centroid进行线性回归，得到对应的边缘数据，包括斜率、截距等。</li>
+<li>获取得到重新定位ROI，根据图像数据及其到边缘的距离，获得ESF。</li>
+<li>对ESF进行4倍超采样，根据每个数据与它同一行的边缘位置的距离，分别放入4个容器中，获得4xESF。</li>
+<li>对4xESF进行差分运算，获得LSF。</li>
+<li>对LSF应用汉明窗，减少图像边缘及噪声影响。</li>
+<li>进行DFT运算，获得OTF。</li>
+<li>从OTF的实部获得SFR。</li>
+</ol>
+<h4>代码获取</h4>
+<p>​	本系列文章都是主要分析Mitre SFR 1.4源码，具体可以下载查看。</p>
+<p>​	下载地址：<a href="http://www2.mitre.org/tech/mtf/sfr.zip" target="_blank" rel="noopener">Mitre SFR 1.4</a></p>
+<p>&lt;!--本篇主要根据第二篇中的算法流程，描述前面的几个流程及其相关原理。这里参考标准中的附录C算法原理及mitre SFR的代码实现，并结合自己需要对其进行优化。--&gt;</p>
+<h3>获取ROI图像</h3>
+<p>​	这里从拍摄的图像（一般为RGB）中截取ROI区域，并将其转换为Gray。</p>
+<p>​	有个问题就是：用于SFR算法的图像大小多大比较合适？ROI的区域大小信息并没有严格定义，但会有影响，具体各个方面的要求可参考如下：
+​	对于定义ROI，有以下几个要求：（针对垂直的斜边）</p>
+<ol>
+<li>
+<p>对于垂直的斜边，ROI的宽度要小于高度。</p>
+</li>
+<li>
+<p>在ROI中，只允许出现一个斜边，并且大致居中。</p>
+</li>
+<li>
+<p>在底部或者顶部，比例小的那一部分不能低于5个像素</p>
+</li>
+<li>
+<p>在中心位置，边界到中间斜边的距离需要在20至60个像素之间</p>
+</li>
+<li>
+<p>高度需要在80到300之间。</p>
+</li>
+<li>
+<p>ROI中避免污点，保证图像边界基本连续。</p>
+<p>而以下的图片已经很能说明问题如何解决。</p>
+</li>
+</ol>
+<p></p>
+<h3>线性图像</h3>
+<p>​	主要是对获取到的斜边数据进行伽马变换，获取到线性的图像数据。</p>
+<p>​	为什么要获取线性的图像数据？
+​	在SFR的标准算法中，建议的算法是用OECF将图像数据转化为线性数据。因此需要讨论下我们获取到的数据是否线性数据。线性跟非线性应该怎样去理解。</p>
+<p>​	通常，sensor获取到的数据是线性的，sensor上每个pixel都是根据物体所呈现出来的颜色强度转化为对应的数值。但是，由于人眼对颜色的感知不是线性的，因此，通常在相机内部处理中，都有对转化后的图像进行伽马变换，变换后的图像就不是线性的，使得图像数据能够适应人眼。而通常取值为2.2的伽马变换。</p>
+<p>​	为了获取到线性的图像数据，需要抵消这个伽马变换，在算法上，我们可以采取1/2.2的伽马变换来抵消。</p>
+<p>​	在imatest的SFR算法中，也是采用的伽马变换来获得线性数据。</p>
+<p>​	• The cropped image is linearized, i.e., the pixel levels are adjusted to remove the gamma encoding applied by the camera. (Gamma is adjustable with a default of 0.5).
+​	参考：<a href="http://www.imatest.com/docs/sharpness/#calc" target="_blank" rel="noopener">http://www.imatest.com/docs/sharpness/#calc</a></p>
+<p>​	在这里，我们根据前面的GRAY数据，处理获得线性化数据ϕ(p,r)，其中p表示像素的个数，r表示图像的行数。</p>
+<h4>找到图像中的矩心centroid</h4>
+<p>​	这里是为了获取图像每一行的矩心centroid，因为我们是要计算出边缘的回归线，经过矩心的回归线是最佳的。</p>
+<p>​	对于图像数据，在边缘的地方，我们可以认为每一行都是边缘扩散函数的估计值，这些边缘扩散函数的估计值能够通过差分计算获得对应的线扩散函数。这里先计算每一行的矩心：
+$$
+C(r)=\frac{\sum_{p}^{p-1}p[\phi(p+1,r)-\phi(p,r)]}{\sum_{p}^{p-1}[\phi(p+1,r)-\phi(p,r)]}
+$$
+​	在代码中对应的函数为：locate_centroids()，size_y为ROI的行数，shifts[]为每一行上矩心的位置，temp[]为每一行矩心距离图像中心的Y的数值。方向表示数值符号为正的方向。</p>
+<p><img src="/2019/03/15/SFR算法详解/centroid.jpg" title="质心计算"></p>
+<h3>线性回归</h3>
+<p>​	在得到对应的矩心之后，对其进行线性回归。这里采用最小二乘法，求出估计参数a、b。
+​	最小二乘法的目的是为了使得各个矩心到拟合出来的直线上对应的点的差的平方和最小，即残差平方和最小。相应的数学原理如下：</p>
+<p>​	<img src="/2019/03/15/SFR算法详解/2.png" title="最小二乘法"></p>
+<p>​	在代码中，a对应于b0，b对应于b1.
+​	需要注意的是，在代码中，是将ROI进行翻转再进行线性回归的，这样是为了基于图像中行数的变化（下图中的x）来求解对应的y的方程。下图根据代码中的变量得出。</p>
+<h3>4倍超采样</h3>
+<p>​	在这里我们的目标是对ROI区域进行4倍超采样。</p>
+<ol>
+<li>
+<p>edgex是以边缘为基准的，以距离边缘的长度为数值的x坐标，以下成为edgex轴。</p>
+</li>
+<li>
+<p>在超采样的过程中，我们先计算每个像素点的edgex值。需要明确的是对于ESF，定义域的范围从0到size_x*4</p>
+</li>
+<li>
+<p>对edgex轴的数值进行四倍放大，然后向下取整，获得对应坐标，并且保存相应位置的signal值。由于是逐行扫描，对于每一行，都会对之前所计算得到的坐标对应的值有所重复，这是，我们采用对其求平均值。比如：</p>
+<p>在第i行，在整个区域内对应的坐标为j，有 4*edgex[i] = k，得到AveEdge[k] = Signal[j];</p>
+<p>在第i+1行，区域坐标为j+N*size_x，有 4*edgex[i+N] = k，得到
+$$
+AveEdge[k]=  \frac{AveEdge[k]+signal[j+N*size_x]}{2}
+$$
+在这里，AveEdge就是得到的4x方法的ESF的值。</p>
+<p><img src="/2019/03/15/SFR算法详解/4x.jpg" title="4倍超采样"></p>
+</li>
+</ol>
+<p>###差分运算，获得LSF</p>
+<p>​	calculate_derivative，对ESF进行求导，获得LSF。</p>
+<p>​	求导的计算，其实就是差分的概念，在这里，我们采用AvgEdge[i]-AvgEdge[i-1]进行求导。</p>
 
       
     </div>
@@ -522,8 +631,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/14/计算MTF软件说明/" rel="next" title="计算MTF软件说明">
-                <i class="fa fa-chevron-left"></i> 计算MTF软件说明
+              <a href="/2019/03/12/如何测量MTF-二/" rel="next" title="如何测量MTF(二)">
+                <i class="fa fa-chevron-left"></i> 如何测量MTF(二)
               </a>
             
           </div>
@@ -531,10 +640,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/20/如何测量MTF-一/" rel="prev" title="如何测量MTF(一)">
-                如何测量MTF(一) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -699,7 +804,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">光电测试中使用的光源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">特点和优势:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.2.</span> <span class="nav-text">技术参数:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">什么是MTF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">MTF50，MTF50P</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">SFR算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.0.1.</span> <span class="nav-text">水平SFR及垂直SFR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">算法流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.1.</span> <span class="nav-text">代码获取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">获取ROI图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">线性图像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.1.</span> <span class="nav-text">找到图像中的矩心centroid</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.4.</span> <span class="nav-text">线性回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.5.</span> <span class="nav-text">4倍超采样</span></a></li></ol></div>
             
 
           </div>
@@ -840,9 +945,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/02/15/实验用光源/';
-          this.page.identifier = '2019/02/15/实验用光源/';
-          this.page.title = '实验用光源';
+          this.page.url = 'http://yoursite.com/2019/03/15/SFR算法详解/';
+          this.page.identifier = '2019/03/15/SFR算法详解/';
+          this.page.title = 'SFR算法详解';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://Ursa.disqus.com/embed.js';

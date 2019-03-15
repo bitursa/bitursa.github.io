@@ -101,17 +101,17 @@
 
 
 
-<meta name="description" content="通过之前两篇文章的讨论，可以总结几点：  在ADC小于满阱容量的时候，线性测量的方法和Mean-Variance方法(注：目前项目测试中使用的是这种方法)可以得到相近的结果。 在ADC大于满阱容量的时候，线性测量法的结果要大于Mean-Variance法。  造成这种结果差异是由探测器响应不均匀性造成的。  灵敏度高的像元会先饱和； 满阱值不均匀，有些像元会在低满阱值饱和； 从测量结果不清楚像素的">
+<meta name="description" content="通过之前两篇文章的讨论，可以总结几点：   在ADC小于满阱容量的时候，线性测量的方法和Mean-Variance方法(注：目前项目测试中使用的是这种方法)可以得到相近的结果。   在ADC大于满阱容量的时候，线性测量法的结果要大于Mean-Variance法。   造成这种结果差异是由探测器响应不均匀性造成的。   灵敏度高的像元会先饱和；   满阱值不均匀，有些像元会在低满阱值饱和；   从测">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何测量满阱容量(三)">
 <meta property="og:url" content="http://yoursite.com/2019/01/21/如何测量满阱容量-三/index.html">
 <meta property="og:site_name" content="张至诚的博客">
-<meta property="og:description" content="通过之前两篇文章的讨论，可以总结几点：  在ADC小于满阱容量的时候，线性测量的方法和Mean-Variance方法(注：目前项目测试中使用的是这种方法)可以得到相近的结果。 在ADC大于满阱容量的时候，线性测量法的结果要大于Mean-Variance法。  造成这种结果差异是由探测器响应不均匀性造成的。  灵敏度高的像元会先饱和； 满阱值不均匀，有些像元会在低满阱值饱和； 从测量结果不清楚像素的">
+<meta property="og:description" content="通过之前两篇文章的讨论，可以总结几点：   在ADC小于满阱容量的时候，线性测量的方法和Mean-Variance方法(注：目前项目测试中使用的是这种方法)可以得到相近的结果。   在ADC大于满阱容量的时候，线性测量法的结果要大于Mean-Variance法。   造成这种结果差异是由探测器响应不均匀性造成的。   灵敏度高的像元会先饱和；   满阱值不均匀，有些像元会在低满阱值饱和；   从测">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-01-21T08:41:07.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何测量满阱容量(三)">
-<meta name="twitter:description" content="通过之前两篇文章的讨论，可以总结几点：  在ADC小于满阱容量的时候，线性测量的方法和Mean-Variance方法(注：目前项目测试中使用的是这种方法)可以得到相近的结果。 在ADC大于满阱容量的时候，线性测量法的结果要大于Mean-Variance法。  造成这种结果差异是由探测器响应不均匀性造成的。  灵敏度高的像元会先饱和； 满阱值不均匀，有些像元会在低满阱值饱和； 从测量结果不清楚像素的">
+<meta name="twitter:description" content="通过之前两篇文章的讨论，可以总结几点：   在ADC小于满阱容量的时候，线性测量的方法和Mean-Variance方法(注：目前项目测试中使用的是这种方法)可以得到相近的结果。   在ADC大于满阱容量的时候，线性测量法的结果要大于Mean-Variance法。   造成这种结果差异是由探测器响应不均匀性造成的。   灵敏度高的像元会先饱和；   满阱值不均匀，有些像元会在低满阱值饱和；   从测">
 
 
 
@@ -468,21 +468,39 @@
       
         <p><strong>通过之前两篇文章的讨论，可以总结几点：</strong></p>
 <ul>
-<li><p>在ADC小于满阱容量的时候，线性测量的方法和Mean-Variance方法(注：目前项目测试中使用的是这种方法)可以得到相近的结果。</p></li>
-<li><p>在ADC大于满阱容量的时候，线性测量法的结果要大于Mean-Variance法。</p></li>
+<li>
+<p>在ADC小于满阱容量的时候，线性测量的方法和Mean-Variance方法(注：目前项目测试中使用的是这种方法)可以得到相近的结果。</p>
+</li>
+<li>
+<p>在ADC大于满阱容量的时候，线性测量法的结果要大于Mean-Variance法。</p>
+</li>
 </ul>
 <p>造成这种结果差异是由探测器响应不均匀性造成的。</p>
 <ul>
-<li><p>灵敏度高的像元会先饱和；</p></li>
-<li><p>满阱值不均匀，有些像元会在低满阱值饱和；</p></li>
-<li><p>从测量结果不清楚像素的哪个部分导致饱和:</p>
+<li>
+<p>灵敏度高的像元会先饱和；</p>
+</li>
+<li>
+<p>满阱值不均匀，有些像元会在低满阱值饱和；</p>
+</li>
+<li>
+<p>从测量结果不清楚像素的哪个部分导致饱和:</p>
 <ul>
-<li><p>the pinned-photodiode</p></li>
-<li><p>the floating diffusion capacitance</p></li>
-<li><p>the output swing limitation of the source-follower 源极跟随器的输出摆动限制，</p></li>
-<li><p>output limitation swing of the analog circuitry 模拟电路的输出限制摆动</p>
-<p>所有这些限制都会相互干扰，这使得理解和解释的情况更加复杂。</p></li>
-</ul></li>
+<li>
+<p>the pinned-photodiode</p>
+</li>
+<li>
+<p>the floating diffusion capacitance</p>
+</li>
+<li>
+<p>the output swing limitation of the source-follower 源极跟随器的输出摆动限制，</p>
+</li>
+<li>
+<p>output limitation swing of the analog circuitry 模拟电路的输出限制摆动</p>
+<p>所有这些限制都会相互干扰，这使得理解和解释的情况更加复杂。</p>
+</li>
+</ul>
+</li>
 </ul>
 
       
@@ -603,7 +621,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
