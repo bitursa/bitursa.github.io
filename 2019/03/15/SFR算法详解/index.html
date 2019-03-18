@@ -111,10 +111,11 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/chart.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/flowchart.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/roi.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/centroid.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/SFR算法详解/4x.jpg">
-<meta property="og:updated_time" content="2019-03-15T09:26:05.459Z">
+<meta property="og:updated_time" content="2019-03-18T08:04:15.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SFR算法详解">
 <meta name="twitter:description" content="​	最近在看计算MTF的算法相关的内容，在网上看见了介绍SFR的算法详解，就扒过来了。链接 ​	这几篇文章写的是SFR算法，主要根据相关的概念及其对应的标准和源码，来看看SFR究竟是什么？这里先简单介绍下一些基本的概念。 ​	参考链接1 ​	参看链接2 什么是MTF ​	MTF算法是分析镜头解像能力的算法，其全称是Modulation Transfer Function(调制传递函数)。为了理解这">
@@ -363,8 +364,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-15T17:26:05+08:00">
-                2019-03-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-18T16:04:15+08:00">
+                2019-03-18
               </time>
             
           </span>
@@ -500,7 +501,7 @@ $$
 <p>​	由于在图像拍摄过程中，图像处理模块有可能会对图像进行锐利化，对MTF的数值有所影响，而为了避免这样的影响，则规定MTF50P是相机拍摄后的图像的MTF最大值的50%对应的空间频率。</p>
 <h2>SFR算法详解</h2>
 <p>​	这里主要参考ISO 12233标准所描述的SFR算法过程，详见《<strong>ISO 12233-2000 Camera resolution measurement</strong>》中6.3 Saptial frequency response。</p>
-<h4>水平SFR及垂直SFR</h4>
+<h3>水平SFR及垂直SFR</h3>
 <p>​	SFR是通过分析相机拍摄到的图像中一个黑色到白色的斜边而得到的，即下图中所示的红框部分。其中，区域1的垂直斜边用于计算水平SFR，而区域2的水平斜边用于计算垂直SFR。</p>
 <p><img src="/2019/03/15/SFR算法详解/chart.jpg" title="分辨率板"></p>
 <p>​	在后续的算法中，我们讨论的是怎么计算水平SFR，而垂直SFR可以通过旋转90°之后进行跟水平SFR同样的算法获得。</p>
@@ -520,7 +521,7 @@ $$
 <li>进行DFT运算，获得OTF。</li>
 <li>从OTF的实部获得SFR。</li>
 </ol>
-<h4>代码获取</h4>
+<h3>代码获取</h3>
 <p>​	本系列文章都是主要分析Mitre SFR 1.4源码，具体可以下载查看。</p>
 <p>​	下载地址：<a href="http://www2.mitre.org/tech/mtf/sfr.zip" target="_blank" rel="noopener">Mitre SFR 1.4</a></p>
 <p>&lt;!--本篇主要根据第二篇中的算法流程，描述前面的几个流程及其相关原理。这里参考标准中的附录C算法原理及mitre SFR的代码实现，并结合自己需要对其进行优化。--&gt;</p>
@@ -549,7 +550,7 @@ $$
 <p>而以下的图片已经很能说明问题如何解决。</p>
 </li>
 </ol>
-<p></p>
+<p><img src="/2019/03/15/SFR算法详解/roi.png" title="ROI图像的选取"></p>
 <h3>线性图像</h3>
 <p>​	主要是对获取到的斜边数据进行伽马变换，获取到线性的图像数据。</p>
 <p>​	为什么要获取线性的图像数据？
@@ -594,7 +595,7 @@ $$
 <p><img src="/2019/03/15/SFR算法详解/4x.jpg" title="4倍超采样"></p>
 </li>
 </ol>
-<p>###差分运算，获得LSF</p>
+<h3>差分运算，获得LSF</h3>
 <p>​	calculate_derivative，对ESF进行求导，获得LSF。</p>
 <p>​	求导的计算，其实就是差分的概念，在这里，我们采用AvgEdge[i]-AvgEdge[i-1]进行求导。</p>
 
@@ -804,7 +805,7 @@ $$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">什么是MTF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">MTF50，MTF50P</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">SFR算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.0.1.</span> <span class="nav-text">水平SFR及垂直SFR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">算法流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.1.</span> <span class="nav-text">代码获取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">获取ROI图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">线性图像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.1.</span> <span class="nav-text">找到图像中的矩心centroid</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.4.</span> <span class="nav-text">线性回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.5.</span> <span class="nav-text">4倍超采样</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">什么是MTF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">MTF50，MTF50P</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">SFR算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">水平SFR及垂直SFR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">代码获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.4.</span> <span class="nav-text">获取ROI图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.5.</span> <span class="nav-text">线性图像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.5.1.</span> <span class="nav-text">找到图像中的矩心centroid</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.6.</span> <span class="nav-text">线性回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.7.</span> <span class="nav-text">4倍超采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.8.</span> <span class="nav-text">差分运算，获得LSF</span></a></li></ol></li></ol></div>
             
 
           </div>
