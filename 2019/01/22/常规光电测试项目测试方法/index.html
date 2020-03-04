@@ -6,7 +6,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -101,17 +101,17 @@
 
 
 
-<meta name="description" content="本篇主要总结下项目中常规光电测试使用的方法，都是通过拍摄本底场、暗场、平场图像实现的。 本底统计、读出噪声 在慢读出和快读出的方式下拍摄本底场图像N帧，N≥100。 读出噪声   对本底场图像的每个像元将N次拍摄的像元值计算平均值及标准偏差，计算中剔除最大、最小值；   每一像元N次拍摄像元值的标准偏差是该像元的读出噪声，乘以增益即以电子数为单位的读出噪声；   计算各像元读出噪声，获得探测器各像">
+<meta name="description" content="本篇主要总结下项目中常规光电测试使用的方法，都是通过拍摄本底场、暗场、平场图像实现的。 本底统计、读出噪声 在慢读出和快读出的方式下拍摄本底场图像N帧，N≥100。 读出噪声  对本底场图像的每个像元将N次拍摄的像元值计算平均值及标准偏差，计算中剔除最大、最小值； 每一像元N次拍摄像元值的标准偏差是该像元的读出噪声，乘以增益即以电子数为单位的读出噪声； 计算各像元读出噪声，获得探测器各像元读出噪声">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常规光电测试项目测试方法">
 <meta property="og:url" content="http://yoursite.com/2019/01/22/常规光电测试项目测试方法/index.html">
 <meta property="og:site_name" content="张至诚的博客">
-<meta property="og:description" content="本篇主要总结下项目中常规光电测试使用的方法，都是通过拍摄本底场、暗场、平场图像实现的。 本底统计、读出噪声 在慢读出和快读出的方式下拍摄本底场图像N帧，N≥100。 读出噪声   对本底场图像的每个像元将N次拍摄的像元值计算平均值及标准偏差，计算中剔除最大、最小值；   每一像元N次拍摄像元值的标准偏差是该像元的读出噪声，乘以增益即以电子数为单位的读出噪声；   计算各像元读出噪声，获得探测器各像">
+<meta property="og:description" content="本篇主要总结下项目中常规光电测试使用的方法，都是通过拍摄本底场、暗场、平场图像实现的。 本底统计、读出噪声 在慢读出和快读出的方式下拍摄本底场图像N帧，N≥100。 读出噪声  对本底场图像的每个像元将N次拍摄的像元值计算平均值及标准偏差，计算中剔除最大、最小值； 每一像元N次拍摄像元值的标准偏差是该像元的读出噪声，乘以增益即以电子数为单位的读出噪声； 计算各像元读出噪声，获得探测器各像元读出噪声">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-30T01:45:42.210Z">
+<meta property="og:updated_time" content="2020-03-04T03:45:00.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常规光电测试项目测试方法">
-<meta name="twitter:description" content="本篇主要总结下项目中常规光电测试使用的方法，都是通过拍摄本底场、暗场、平场图像实现的。 本底统计、读出噪声 在慢读出和快读出的方式下拍摄本底场图像N帧，N≥100。 读出噪声   对本底场图像的每个像元将N次拍摄的像元值计算平均值及标准偏差，计算中剔除最大、最小值；   每一像元N次拍摄像元值的标准偏差是该像元的读出噪声，乘以增益即以电子数为单位的读出噪声；   计算各像元读出噪声，获得探测器各像">
+<meta name="twitter:description" content="本篇主要总结下项目中常规光电测试使用的方法，都是通过拍摄本底场、暗场、平场图像实现的。 本底统计、读出噪声 在慢读出和快读出的方式下拍摄本底场图像N帧，N≥100。 读出噪声  对本底场图像的每个像元将N次拍摄的像元值计算平均值及标准偏差，计算中剔除最大、最小值； 每一像元N次拍摄像元值的标准偏差是该像元的读出噪声，乘以增益即以电子数为单位的读出噪声； 计算各像元读出噪声，获得探测器各像元读出噪声">
 
 
 
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-30T09:45:42+08:00">
-                2019-01-30
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-04T11:45:00+08:00">
+                2020-03-04
               </time>
             
           </span>
@@ -467,171 +467,120 @@
 
       
         <p>本篇主要总结下项目中常规光电测试使用的方法，都是通过拍摄本底场、暗场、平场图像实现的。</p>
-<h2>本底统计、读出噪声</h2>
+<h2 id="本底统计读出噪声">本底统计、读出噪声</h2>
 <p>在慢读出和快读出的方式下拍摄本底场图像N帧，N≥100。</p>
-<h3>读出噪声</h3>
-<ol>
-<li>
-<p>对本底场图像的每个像元将N次拍摄的像元值计算平均值及标准偏差，计算中剔除最大、最小值；</p>
-</li>
-<li>
-<p>每一像元N次拍摄像元值的标准偏差是<strong>该像元</strong>的读出噪声，乘以增益即以电子数为单位的读出噪声；</p>
-</li>
-<li>
-<p>计算各像元读出噪声，获得探测器各像元读出噪声分布情况，<strong>各像元读出噪声的平均值作为相机的读出噪声</strong>。</p>
-</li>
+<h3 id="读出噪声">读出噪声</h3>
+<ol type="1">
+<li><p>对本底场图像的每个像元将N次拍摄的像元值计算平均值及标准偏差，计算中剔除最大、最小值；</p></li>
+<li><p>每一像元N次拍摄像元值的标准偏差是<strong>该像元</strong>的读出噪声，乘以增益即以电子数为单位的读出噪声；</p></li>
+<li><p>计算各像元读出噪声，获得探测器各像元读出噪声分布情况，<strong>各像元读出噪声的平均值作为相机的读出噪声</strong>。</p></li>
 </ol>
-<h3>本底场统计</h3>
-<ol>
-<li>
-<p>将N帧本底场合并，合并后本底场记做(Zero)反应固定图案噪声，可用作后续数据处理中本底场改正的图像；</p>
-</li>
-<li>
-<p>选取本底场Zero_i一帧，减去平均本底场Zero，乘以增益，进行直方图统计，计算大于15e-和25e-的像元比例；</p>
-</li>
-<li>
-<p>缺陷像元不参加统计。</p>
-</li>
+<h3 id="本底场统计">本底场统计</h3>
+<ol type="1">
+<li><p>将N帧本底场合并，合并后本底场记做(Zero)反应固定图案噪声，可用作后续数据处理中本底场改正的图像；</p></li>
+<li><p>选取本底场Zero_i一帧，减去平均本底场Zero，乘以增益，进行直方图统计，计算大于15e-和25e-的像元比例；</p></li>
+<li><p>缺陷像元不参加统计。</p></li>
 </ol>
-<h2>光子转移曲线</h2>
-<ol>
-<li>
-<p>设置一组曝光序列[k]，分别拍摄本底场图像n张，平场图像n张(n&gt;=4)；</p>
-</li>
-<li>
-<p>每组图像选择平均值最接近的两帧图像；</p>
-</li>
-<li>
-<p>选择用于制作光子转移曲线的图像区域[x1:x2,y1:y2]，共包括n个像元；图像区域应在探测器的一个通道之内；</p>
-</li>
-<li>
-<p>计算两幅本底场图像B1和B2在选定区域[x1:x2,y1:y2]内的：</p>
+<h2 id="光子转移曲线">光子转移曲线</h2>
+<ol type="1">
+<li>设置一组曝光序列[k]，分别拍摄本底场图像n张，平场图像n张(n&gt;=4)；</li>
+<li>每组图像选择平均值最接近的两帧图像；</li>
+<li>选择用于制作光子转移曲线的图像区域[x1:x2,y1:y2]，共包括n个像元；图像区域应在探测器的一个通道之内；</li>
+<li>计算两幅本底场图像B1和B2在选定区域[x1:x2,y1:y2]内的：</li>
+</ol>
+<p>​ 像元平均值 <span class="math display">\[
+\begin{align}
+      \bar{B1}和\bar{B2} 
+    \end{align}
+\]</span> <span class="math display">\[
+\begin{align}
+      \bar { B } =\frac { 1 }{ n } \sum _{ x=x1 }^{ x2 }{ \sum _{ y=y1 }^{ y2 }{ B\_ ADU\left( x,y \right)  }  } 
+    \end{align}
+\]</span> 方差图像 <span class="math display">\[
+\begin{align}
+      \triangle B\left( { x }_{ i },{ y }_{ i } \right) =B1\left( { x }_{ i },{ y }_{ i } \right)-B2\left( { x }_{ i },{ y }_{ i } \right) 
+    \end{align}
+\]</span> * 及差值图像方差：</p>
+<p><span class="math display">\[
+\begin{align}
+  Var\left( \triangle B \right) =\frac { 1 }{ n } \sum _{ x=x1 }^{ x2 }{ \sum _{ y=y1 }^{ y2 }{ { \left( \triangle B\_ ADU\left( x,y \right) -\overline { \triangle B }  \right)  }^{ 2 } }  } 
+\end{align}
+\]</span></p>
+<ol start="5" type="1">
+<li><p>针对第k档曝光时间，计算该曝光档位下的两副牌平场图像F1<sub>k</sub>和F2<sub>k</sub>在选定统计区域[x1:x2,y1:y2]内的：</p>
 <ul>
-<li>像元平均值
-$$
-\begin{align}
-\bar{B1}和\bar{B2}
-\end{align}
-$$
-$$
-\begin{align}
-\bar { B } =\frac { 1 }{ n } \sum _{ x=x1 }^{ x2 }{ \sum _{ y=y1 }^{ y2 }{ B_ ADU\left( x,y \right)  }  }
-\end{align}
-$$</li>
-<li>方差图像
-$$
-\begin{align}
-\triangle B\left( { x }<em>{ i },{ y }</em>{ i } \right) =B1\left( { x }<em>{ i },{ y }</em>{ i } \right)-B2\left( { x }<em>{ i },{ y }</em>{ i } \right)
-\end{align}
-$$
-及差值图像方差：
-$$
-\begin{align}
-Var\left( \triangle B \right) =\frac { 1 }{ n } \sum _{ x=x1 }^{ x2 }{ \sum _{ y=y1 }^{ y2 }{ { \left( \triangle B_ ADU\left( x,y \right) -\overline { \triangle B }  \right)  }^{ 2 } }  }
-\end{align}
-$$</li>
-</ul>
-</li>
-<li>
-<p>针对第k档曝光时间，计算该曝光档位下的两副牌平场图像F1&lt;sub&gt;k&lt;/sub&gt;和F2&lt;sub&gt;k&lt;/sub&gt;在选定统计区域[x1:x2,y1:y2]内的：</p>
-<ul>
-<li>像元平均值
-$$
-\begin{align}
-{ F1 }<em>{ k }和{ F2 }</em>{ k }
-\end{align}
-$$</li>
-<li>差值图像，及差值图像像元值的方差
-$$
-\begin{align}
-\triangle { F }<em>{ k } 以及 Var\left( \triangle { F }</em>{ k } \right)
-\end{align}
-$$
-$$
-\begin{align}
-\triangle { F }<em>{ k }\left( { x }</em>{ i },{ y }<em>{ i } \right) ={ F1 }</em>{ k }\left( { x }<em>{ i },{ y }</em>{ i } \right) -{ F2 }<em>{ k }\left( { x }</em>{ i },{ y }_{ i } \right)<br>
-\end{align}
-$$</li>
-</ul>
-</li>
-<li>
-<p>制作光子转移曲线，横坐标为像元平均值mean，纵坐标为方差：
-$$
-\begin{align}
-mean=\frac { 1 }{ 2 } \left( \left( \overline { { F1 }<em>{ k } } +\overline { { F2 }</em>{ k } }  \right) -\left( \overline { B1 } +\overline { B2 }  \right)  \right)
-\end{align}
-$$
-$$
-\begin{align}
-Variance=\frac { 1 }{ 2 } \left( \left( Var\left( \triangle { F }_{ k } \right)  \right) -\left( Var\left( \triangle B \right)  \right)  \right)
-\end{align}
-$$</p>
-</li>
-<li>
-<p>对光子转移曲线在0到拐点之间的区间进行线性拟合，计算样本点偏离线性的程度即非线性度，将最接近拐点且非线性度 &lt;6%
-的测量点对应的平均像元值作为探测器的满阱像元值；</p>
-</li>
+<li>像元平均值 <span class="math display">\[
+  \begin{align}
+  { F1 }_{ k }和{ F2 }_{ k } 
+  \end{align}
+\]</span></li>
+<li>差值图像，及差值图像像元值的方差 <span class="math display">\[
+ \begin{align}
+  \triangle { F }_{ k } 以及 Var\left( \triangle { F }_{ k } \right) 
+  \end{align}
+\]</span> <span class="math display">\[
+  \begin{align}
+  \triangle { F }_{ k }\left( { x }_{ i },{ y }_{ i } \right) ={ F1 }_{ k }\left( { x }_{ i },{ y }_{ i } \right) -{ F2 }_{ k }\left( { x }_{ i },{ y }_{ i } \right)  
+  \end{align}
+\]</span></li>
+</ul></li>
+<li><p>制作光子转移曲线，横坐标为像元平均值mean，纵坐标为方差： <span class="math display">\[
+  \begin{align}
+  mean=\frac { 1 }{ 2 } \left( \left( \overline { { F1 }_{ k } } +\overline { { F2 }_{ k } }  \right) -\left( \overline { B1 } +\overline { B2 }  \right)  \right) 
+  \end{align}
+  \]</span> <span class="math display">\[
+  \begin{align}
+  Variance=\frac { 1 }{ 2 } \left( \left( Var\left( \triangle { F }_{ k } \right)  \right) -\left( Var\left( \triangle B \right)  \right)  \right) 
+  \end{align}
+  \]</span></p></li>
+<li><p>对光子转移曲线在0到拐点之间的区间进行线性拟合，计算样本点偏离线性的程度即非线性度，将最接近拐点且非线性度 &lt;6% 的测量点对应的平均像元值作为探测器的满阱像元值；</p></li>
 </ol>
 <p>非线性度 =（测量值-拟合值）/（拟合值）x 100%</p>
-<ol start="8">
-<li>
-<p>拟合得到直线的斜率的倒数是相机的增益（gain, 单位 e-/ADU）；</p>
-</li>
-<li>
-<p>在满阱典型值指标范围内计算光子转移曲线非线性度；</p>
-</li>
-<li>
-<p>满阱电荷 = 满阱像元值 x gain;</p>
-</li>
-<li>
-<p>制作各个通道的光子转移曲线，满阱典型值为各通道满阱电荷的平均值。</p>
-</li>
+<ol start="8" type="1">
+<li><p>拟合得到直线的斜率的倒数是相机的增益（gain, 单位 e-/ADU）；</p></li>
+<li><p>在满阱典型值指标范围内计算光子转移曲线非线性度；</p></li>
+<li><p>满阱电荷 = 满阱像元值 x gain;</p></li>
+<li><p>制作各个通道的光子转移曲线，满阱典型值为各通道满阱电荷的平均值。</p></li>
 </ol>
-<h2>增益计算</h2>
+<h2 id="增益计算">增益计算</h2>
 <p><strong>根据一组本底图像和平场图像计算相机增益：</strong></p>
-<ol>
+<ol type="1">
 <li>在当前的档位下拍摄m帧本底场，m帧平场(m≥3);</li>
 <li>Zero：
 <ul>
 <li>每帧计算平均值并标注 （zero1, zero2, zero3 ... zeroN）</li>
-</ul>
-</li>
+</ul></li>
 <li>Flat：
 <ul>
 <li>每帧计算平均值并标注（flat1, flat2, flat3 ... flatN）</li>
-</ul>
-</li>
+</ul></li>
 <li>从各组（Zero/Flat）找到平均值最接近的两图像分别记为图像（Zero1,Zero2/Flat1,Flat2）</li>
 <li>本底处理:
 <ul>
-<li>图像做差 Zero&lt;sub&gt;dif&lt;/sub&gt; = Zero1 - Zero2;</li>
-<li>求Zero&lt;sub&gt;dif&lt;/sub&gt;图像的方差： Var(Zero&lt;sub&gt;dif&lt;/sub&gt;)</li>
-<li>图像做差 Flat&lt;sub&gt;dif&lt;/sub&gt; = Flat1 - Flat2;</li>
-<li>求Flat&lt;sub&gt;dif&lt;/sub&gt;图像的方差： Var(Flat&lt;sub&gt;dif&lt;/sub&gt;)
-$$Gain = \frac{[mean(Flat1)+mean(Flat2)]-[mean(Zero1)+mean(Zero2)]}{Var(Flat_{dif})-Var(Zero_{dif})}$$</li>
-</ul>
-</li>
+<li>图像做差 Zero<sub>dif</sub> = Zero1 - Zero2;</li>
+<li>求Zero<sub>dif</sub>图像的方差： Var(Zero<sub>dif</sub>)</li>
+<li>图像做差 Flat<sub>dif</sub> = Flat1 - Flat2;</li>
+<li>求Flat<sub>dif</sub>图像的方差： Var(Flat<sub>dif</sub>) <span class="math display">\[Gain = \frac{[mean(Flat1)+mean(Flat2)]-[mean(Zero1)+mean(Zero2)]}{Var(Flat_{dif})-Var(Zero_{dif})}\]</span></li>
+</ul></li>
 </ol>
-<h2>光子响应非线性度</h2>
-<ol>
-<li>绘制输入输出曲线，横坐标为曝光量(曝光时间或脉冲个数)，纵坐标是相应拍摄的多幅平场图像(已经减掉本底)的平均值：
-$$
+<h2 id="光子响应非线性度">光子响应非线性度</h2>
+<ol type="1">
+<li>绘制输入输出曲线，横坐标为曝光量(曝光时间或脉冲个数)，纵坐标是相应拍摄的多幅平场图像(已经减掉本底)的平均值： <span class="math display">\[
 F_k = \frac{1}{m}(F1_k+F2_k+...Fm_k)
-$$</li>
-<li>在满阱平均值指标范围内用最小二乘法对输入输出曲线进行直线拟合，确定参数 $f(x) = a \times x$</li>
-<li>利用拟合的参数a来计算各曝光时间对应的拟合响应像元值$F(fit)_k$</li>
-<li>在满阱平均值指标范围内计算响应非线性度
-$$非线性度 =\frac{测量值-拟合值}{拟合值}\times 100 % $$</li>
+\]</span></li>
+<li>在满阱平均值指标范围内用最小二乘法对输入输出曲线进行直线拟合，确定参数 <span class="math inline">\(f(x) = a \times x\)</span></li>
+<li>利用拟合的参数a来计算各曝光时间对应的拟合响应像元值<span class="math inline">\(F(fit)_k\)</span></li>
+<li>在满阱平均值指标范围内计算响应非线性度 <span class="math display">\[非线性度 =\frac{测量值-拟合值}{拟合值}\times 100 \% \]</span></li>
 <li>绘制非线性度曲线</li>
 </ol>
-<h2>像元间响应不均匀性(PRNU)</h2>
-<h3>计算公式</h3>
-<p>$$
+<h2 id="像元间响应不均匀性prnu">像元间响应不均匀性(PRNU)</h2>
+<h3 id="计算公式">计算公式</h3>
+<p><span class="math display">\[
 \begin{align}
-PRNU=\frac { { FPN }<em>{ ADU } }{ \overline { ADU }  }
-\ =\sqrt { 2 } \times \frac { \sqrt { \left( { \sigma  }</em>{ F1 }^{ 2 }{ +\sigma  }<em>{ F2 }^{ 2 } \right) -\left( { \sigma  }</em>{ Z1 }^{ 2 }+{ \sigma  }<em>{ Z2 }^{ 2 } \right) -\left( { \sigma  }</em>{ Fdif }^{ 2 }-{ \sigma  }<em>{ Zdif }^{ 2 } \right)  }  }{ \left( mean_ F1+mean_ F2 \right) -\left( mean_ Z1+mean_ Z2 \right)  } \ =\sqrt { 2 } \times \frac { \sqrt { { \left( { Var }</em>{ F1 }+{ Var }<em>{ F2 } \right) -\left( { Var }</em>{ Z1 }+{ Var }<em>{ Z2 } \right) -\left( { Var }</em>{ Fdif }-{ Var }_{ Zdif } \right)  } }  }{ \left( mean_ F1+mean_ F2 \right) -\left( mean_ Z1+mean_ Z2 \right)  }
+PRNU=\frac { { FPN }_{ ADU } }{ \overline { ADU }  } 
+\ =\sqrt { 2 } \times \frac { \sqrt { \left( { \sigma  }_{ F1 }^{ 2 }{ +\sigma  }_{ F2 }^{ 2 } \right) -\left( { \sigma  }_{ Z1 }^{ 2 }+{ \sigma  }_{ Z2 }^{ 2 } \right) -\left( { \sigma  }_{ Fdif }^{ 2 }-{ \sigma  }_{ Zdif }^{ 2 } \right)  }  }{ \left( mean\_ F1+mean\_ F2 \right) -\left( mean\_ Z1+mean\_ Z2 \right)  } \\ =\sqrt { 2 } \times \frac { \sqrt { { \left( { Var }_{ F1 }+{ Var }_{ F2 } \right) -\left( { Var }_{ Z1 }+{ Var }_{ Z2 } \right) -\left( { Var }_{ Fdif }-{ Var }_{ Zdif } \right)  } }  }{ \left( mean\_ F1+mean\_ F2 \right) -\left( mean\_ Z1+mean\_ Z2 \right)  } 
 \end{align}
-$$</p>
+\]</span></p>
 
       
     </div>
@@ -843,7 +792,7 @@ $$</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">本底统计、读出噪声</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">读出噪声</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">本底场统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">光子转移曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">增益计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">光子响应非线性度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">像元间响应不均匀性(PRNU)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">计算公式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#本底统计读出噪声"><span class="nav-number">1.</span> <span class="nav-text">本底统计、读出噪声</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读出噪声"><span class="nav-number">1.1.</span> <span class="nav-text">读出噪声</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本底场统计"><span class="nav-number">1.2.</span> <span class="nav-text">本底场统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#光子转移曲线"><span class="nav-number">2.</span> <span class="nav-text">光子转移曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增益计算"><span class="nav-number">3.</span> <span class="nav-text">增益计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#光子响应非线性度"><span class="nav-number">4.</span> <span class="nav-text">光子响应非线性度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#像元间响应不均匀性prnu"><span class="nav-number">5.</span> <span class="nav-text">像元间响应不均匀性(PRNU)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算公式"><span class="nav-number">5.1.</span> <span class="nav-text">计算公式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -873,7 +822,7 @@ $$</p>
         <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1452,26 +1401,6 @@ $$</p>
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
